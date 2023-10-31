@@ -1,0 +1,46 @@
+############################## FTP SERVER ####################################
+
+for access from client downlad winscp, filezilla or any this type of software on client pc,windows
+
+01) yum  install -y vsftpd*  (vsftpd=very secure file transfer portocol demon ) (internet connection need)
+02) ISET systemctl ...
+
+**** jehetu amaor amora main machine e kaj korchi tai firewall eftp entry dite hobe, mane alada ip hole obossoi firewall entry dite hobe  ***
+
+03) firewall-cmd --permanent --add-service=ftp 
+****** ftp te client theke acces er jonno 2 ta port thake (20[insecure], 21[secure])*********
+04) firewall-cmd --permanent --add-port=21/tcp
+05) firewall-cmd --reload
+06) firewall-cmd --list-all
+
+*****
+go to clinet pc filezilla and cquick connect with ip 172.16.113.130
+Listen !!!!! without user and password it's logged on.
+Ei access obossoi disable korte hobe.
+
+but by default it's show /pub directory.
+the location in linux:--.  ls /var/ftp/ --> pub
+*****
+
+07)
+08)
+09)
+10)
+11)
+12)
+13)
+14)
+15)
+16)
+17)
+18)
+19)
+20)
+
+
+
+
+
+
+
+

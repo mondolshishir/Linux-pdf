@@ -1,0 +1,36 @@
+# adduser seipexam1;groupadd lab;mkdir /SEIP-Lab;chgrp lab /SEIP-Lab;usermod seipexam1 -g lab;chmod g+rwx /SEIP-Lab;
+cp /etc/passwd /SEIP-Lab;mv /SEIP-Lab/passwd /SEIP-Lab/old_passwd;
+
+
+################ Packages ##############
+
+01) mkdir /software/all     -p
+
+02) cp /run/media/root/CentOS\ 7\ x86_64/Packages/*      /software/all/
+03) nmcli device connect ens33        (jodi net connect na pay)
+04)yum install -y createrepo_c
+05) cd /etc/yum.repos.d/  -->  rm -fr *.repo ---> vim newrepo1.repo ---> 	[123]
+										name= All Packages
+										baseurl=file:///software
+										gpgcheck=0
+										enable=1
+06) createrepo -d /software/
+07) yum clean all
+
+
+ Now you can install any packages from repository
+
+
+############## DHCP Server ##################
+
+01) yum install -y dhcp*
+1.1) systemctl enable dhcpd 
+1.2) systemctl start dhcpd 
+1.3) systemctl status dhcpd 
+02) vim /etc/sysconfig/network-scripts/ifcfg-ens33  or you can use graphical interface
+03) systemctl restart NetworkManager, ifup ens33, ifdown ens33
+04) 
+05) cp /usr/share/doc/dhcp-4.2.5/dhcpd.conf.example    /etc/dhcp/ 
+06) mv /etc/dhcp/dhcpd.conf.example  /etc/dhcp/dhcpd.conf
+07) vim /etc/dhcp/dhcpd.conf ---> line (47....54) & ( 75..77)
+08)

@@ -1,0 +1,73 @@
+01) echo $SHELL
+02) cat /etc/shells
+03) There are two type of command
+	a) buldin   b)  external
+	# type cd
+04) echo $PATH
+05) which ls
+06) alias dog=cat
+07) unalais
+
+*****************Control Operators************************
+08) ; --->(command execute serially ) semicolon use kore amora multiple cmd exeecute korte pari
+09) & ---> (command execute at the same time)--> same as semicolon
+10) $? ---> Previous command correct or not, if correct output will 0(zero) 
+11) && ---> Logical operations (both of logic will be correct, then output given)
+12) || ----> frist logic correct hole second er kase jabe na,correct na hole second logic check korbe
+13) rm file1 && echo It's worked || echo It's Failed
+14) ', "(the difference between single quote and double quote is single print as it is but double check variable, value also )
+15) # --> comment 
+16) \ --> echo Hello \; world
+17) echo Write \
+	> multiple \
+	> lines.
+	output: write multiple lines
+
+************************ Variables **************************
+18) There are two type of variables
+	a) System Defined (Capital letter)  b) User Defined.
+19) echo "I am using $SHELL on $HOSTNAME by $USER account."
+20) set | more 
+21) unset MyVar
+22) We can export variable. To see the export variable
+	# env
+	# env -i bash -c 'echo $SHELL $HOME $USER' -----> to start a clean shell
+	# var3=three
+	# var4=four
+	# echo $var3 $var4
+	# three four
+	# export var4
+	# bash ------> go to a new bash
+	# echo $var3 $var4
+	# four
+
+*****************SHELL Embeding & Options ************************
+23)
+24)
+25)
+26) 
+27) 
+28)
+29)
+30)
+31)
+32)
+33)
+34)
+35)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,95 @@
+****************PACKAGES***********************
+
+Packages Sources
+------
+00) df -HT
+01)# mount /dev/sr0  /mnt -------Local Machine e
+	# ls /mnt
+02) cacti rpm --------> Online
+03) ISO, DVD
+------
+RPM Query
+-----
+# rpm -qa
+# rpm -qa | grep python
+-------
+RPM Insyall
+----
+Manually-> RPM
+Automatically--> YUM
+-------
+ # rpm -qc vsftpd ---> vsftpd Package install korle ki ki pabo
+# rpm -qf /usr/sbin/adduser
+***RPM package add or install korar age obossoi dekhte hobe Linux er kon version er jonno RPM install korbo
+# umane -r
+# uname
+# cat /etc/redhat-release
+# cat /etc/centos-release
+----------INSTALL--------------
+# rpm -ivh 
+#  rpm -ivh --nodeps ------install er somoy kno dependency lagbe na
+# rpm -q -p ftp-0.17............rmp -i [Ekta package er information dekhar jonno] 
+# rpm -vK vstpfd-3.0.2-9.e17.....rpm [amar OS er key and Package er key Same kina check korte hobe ]
+# rpm -qc --scripts stpfd-3.0.2-9.e17.....rpm --> ki language or ki dorone rprogram use hoice seta dekhar jonno.
+# rpm -e vsftpd [e=erase]
+#
+
+=============YUM========================
+** Yum server 2 vabe kaj kore
+	01) Local Repository
+	02) Public Repository
+
+------Local Repository--------
+[Packages]# rpm -ivh vsftpd-3.0.2........rpm [Yum server ke client der jonno install korar jonn]
+# systemctl enable vsftpd
+# systemctl restart vsftpd
+# cd /var/ftp/pub
+# du -sh Packages -----> Total storage dekhay
+# cp -rv /mnt/Packages /var/ftp/pub
+::::::::::::::::::::::
+# cd /etc/yum.repos.d/
+# ls [make a directory and move of contain repo]
+# vi /etc/yum.repos.d/server.repo
+	Repository--->[server] ---id (do not use space)
+		name= local yum server
+		baseurl=  (it can be file:///software/ https://192.168.13.12, http://, ftp:///software/all)
+		gpgcheck= 0 or 1  (gpg=GNU Privacy Guard, license related software er verify er jodi korete cai tokhon 0 or 1 dite hoy
+		[# /etc/pki/rpm-gpg/ ]
+		gpgkey=file:///etc/pkirpm-gpg/RPM-GPG-KEY-Centos-7(gpgcheck korar somoy key er locatione jaiya khoj korecheck kore)
+		enable=1 [yum cmd calanor somoy je koyta repo file thakbe sob gula check korbe, mane jekno ekta enabled thakbe ]	
+
+# rpm -ivh --nodeps createrep.......rpm -- eita na hoile createrepo_c install korte hobe
+# yum install -y createrepo_c ---> public repo theke install korbe, internet thakte hobe
+# yum clean all
+# yum list all
+# yum install httpd
+
+
+
+01) yum command ta repository er jonno kaje lage beshi
+02) repository--> package gulo ke amora je folder store kore rakhi
+		  setai holo repository.hote pare seta ftp, httpd,web server, local machine
+		  local machine e 3 jaigay repository rakha jay.
+03) yum packages install korar jonno nirdisto ekta location e bole dite hobe 
+    jei location e package/software gula thakbe.
+4.1) cd /etc/yum.repos.d/
+4.2) yum install -y createrepo_c [-y=yes] (internet  thakte hobe )---------pore alocona
+
+05) rm -fr *.repo [rm=remove -fr=force, ekta location e jaiya sob delete er command]
+06) mkdir /software/all -p [p= parent control, ektar vitore r ekta]
+07) cp /run/media/root/CentOS\ 7\ x86_64/Pallackages/*      /software/all/
+08) ls /software/all/ | wc -l [total file er poriman dekay ]
+09.1)[root@loca...t yum.repos.d]# vim jekononam.repo (obossoi extention {.repo} hote hobe)
+09.2) Repository--->[id] (do not use space)
+		name= Hardware Related Software
+		baseurl=  (it can be file:///software/ https://192.168.13.12, http://, ftp:///software/all)
+		gpgcheck= 0 or 1  (gpg=GNU Privacy Guard, license related software er verify er jodi korete cai tokhon 0 or 1 dite hoy
+		[# /etc/pki/rpm-gpg/ ]
+		gpgkey=file:///etc/pkirpm-gpg/RPM-GPG-KEY-Centos-7(gpgcheck korar somoy key er locatione jaiya khoj korecheck kore)
+		enable=1 [yum cmd calanor somoy je koyta repo file thakbe sob gula check korbe, ]
+10) # createrepo -d /software/     ( -d= directory, the command is used for install repodata)
+11) # yum 	clean all ( cache clean command )
+12) # wget   (jekno packages download korar jonno)
+
+
+

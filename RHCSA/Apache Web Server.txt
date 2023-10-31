@@ -1,0 +1,50 @@
+***************APACHE WEB SERVER*******************
+
+
+# ISET
+# yum install -y httpd
+# systemctl status , enable , start httpd
+# cd /etc/httpd                  (main file gula eikhane thake )
+#vim /etc/hosts ----------> 172.16.113.100 shishir.net 	shishir (IP will be server IP )
+# hostnamectl set-hostname shishir.net
+# cd /var/www/html/ ---> vim index.html     ( obossoi file type "index.html" hote hobe)    (jodi ei page e kicu na thake tokhon wellcome page dekay)         
+# systemctl restart httpd
+#
+#cd /etc/httpd/conf -----> ls ---> vim httpd.conf  or vim /etc/httpd/conf/httpd.conf
+		31) Serverroot "/etc/httpd"
+		42) Listen 80
+		66) User apache
+		67) apache
+		86) ServerAdmin root@locahost ( ekta valid email bosaiya dite parbo )
+		95) ServerName www.example.com:80
+		102) <Directory />
+		103)     AllowOverride none
+		104)     Require all denied  ( amora caile specifi kore ip dite parbo,
+		105) </Directory>
+		119) ....... 124)
+		163) --------
+
+# mkdir /var/www/html/home ---> vim index.html      ()by default )
+# cd /etc/httpd/conf.d -->vim  hello.conf      (amora jodi alada kore site gular location dite cai and file configure korte cai tahole eitar modde jaite hoeb )
+		<VirtualHost    *:80>
+       			 ServerName      shishir.net
+        		 DocumentRoot    /var/www/html
+		</VirtualHost>
+
+		<Directory "home">
+       			 Require all granted
+		</Directory>
+
+		<Directory "profile">
+      		 	 Require host localhost shishir.net
+		</Directory>
+		
+
+# cd /var/www/html --> mkdir profile --> vim index.html
+#
+#
+#
+#
+#
+#
+#

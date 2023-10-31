@@ -1,0 +1,43 @@
+
+
+****************DHCP SERVER***************
+
+#yum remove -y dhcp*
+ Note ( dhcp server install korar age dekte hobe je network obosthay ase? netword dhcp thakle static kore manually ip bosiye  systemctl, ifup,ifdown
+  cmd caliye then suru korte hobe.
+# vim /etc/sysconfig/network-scripts/ifcfg-ens33	
+( kono ekta service jodi amora configure korte cai tahole 4 ta topics mathay rakhte hobe ISET=Install, Start, Enable, Troubleshooting)
+# yum install dhcp* -y (dhcp server package install cmd form Repository)
+(RPM er maddome jana jay ekta package er information koi thake )
+	example---> # rpm -qc dhcp
+# rpm -ivh /run/media/root/CentOS\ 7\ x86_64/Packages/dhcp-devel-4.2.5-82.el7.centos.x86_64.rpm ( from package )
+# rpm -qc dhcp ( dhcp er location jante)
+# cd /etc/dhcp ---> ls ---> vim or cat dhcpd.conf 
+# cd /usr/share/doc/dhcp-4.2.5/ ----> ls
+# vim dhcpd.conf.example
+# cp /usr/share/doc/dhcp-4.2.5/dhcpd.conf.example /etc/dhcp/
+#  cd /etc/dhcp
+# mv dhcpd.conf.example dhcpd.conf
+#vim dhcp.conf ---->46 # A slightly different configuration for an internal subnet.
+ 			47 subnet 172.16.113.0 netmask 255.255.255.0 {
+			48   range 172.16.113.100 172.16.113.200;
+ 			49   option domain-name-servers 172.16.113.144;
+			50   #option domain-name "internal.example.org";
+ 			51   #option routers 10.5.5.1;
+			52   option broadcast-address 172.16.113.255;
+
+# systemctl enable/start/status/ dhcpd,
+#firewall-cmd --add-service=dhcp ( eita dile temporary service ta thakbe )
+# firewall-cmd --permanent --add-service=dhcp (oermannet thakar jonno ) 
+# firewall-cmd --list-all
+# firewall-cmd --reload
+#vim /etc/dhcp/dhcpd.conf -----> 75) host windows7 {
+ 				 76)   hardware ethernet 00:0C:29:49:22:0D;
+ 				 77)   fixed-address 172.16.113.175;
+ 				}
+
+
+
+
+
+

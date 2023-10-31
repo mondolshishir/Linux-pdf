@@ -1,0 +1,6 @@
+######### FIREWALL ############
+** Linux system e  total 9 ta firewall zone thake
+** sob gula eki somoy e active thakte pare na, tobe multipleinterface thakle multipla zone apply kota jay
+** jodi kokon eki interface 2 ta zone add kore feli default je zone ta thkle seta kaj korbe
+** asole ekta interface 2 jaygay add kora jay na
+**

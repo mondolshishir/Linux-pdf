@@ -1,0 +1,32 @@
+************************************************
+
+
+# hostname,hostnamectl set-hostname sebpo.com
+# uname
+# cat, tac, head, tail , less , more ( file gula read korar jonno ei cmd use koraa hoy )
+# vi, vim(vimulator), gedit, gvim, nano, mcedit ( file gula ke edit korar jonno use hoy )
+# vim ----> set nu
+# u (undo)
+# ctrl +r (redo)
+# ekta liner last e jete hole (end button) jodi mini keyboard hoy tahole (shift+4)
+#ekta liner prothome aste hole (0) full keyboard hole (home) dileo hy
+# ekta line copy korte hole(
+#ekta word copy korte hole (yw) & paste korar jonno (p)
+# search korar jonno (/) word ta likhte hbe then (n) dile uporer dike search korbe, (shift+n) dile next word e jabo
+# mark utanor jonno (nohlsearch) 
+# grep "root" main.cf (ekta word ke tar location dore search kora jay (grep) cmd er maddome )
+# awk  (ei cmd use kore line ny line check kora jay , hacker ra eita use kore )
+# egrep
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#

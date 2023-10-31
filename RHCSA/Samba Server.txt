@@ -1,0 +1,71 @@
+##################### SAMBA SERVER ################
+*** What is samba server and why we use it ?
+ Ans:---> Samba server use kora hoy differnt operating system er modder file sharing, printer sharing, Cross-Platform Integration,
+         Domain controller, Data backup etc korar jonno, resource sharing between different operating system.
+
+
+01) yum install -y samba samba-common samba-client
+02) systemctl start  smb nmb (smb=samba service message block, nmb=netBIOS messege block)
+03)systemctl enable smb nmb, systemctl status  smb nmb
+04) mkdir /software   /devops
+05)useradd user1...,groupadd devops, 
+06) usermod devops1 -aG devops   ( kno user modify korte hoile "usermod" and -aG(append, G= Secondary Group )
+
+07) vim /etc/samba/smb.conf       (entry gula bujhar jonno, ekebare sese dekbo)
+	[windows]
+        comment=For Windows User
+        path=/devops
+	browsable=yes ( by deafult yes thake, dileo pari na dileo pari)
+        host allow=172.16.6.129/24
+        valid users=user1  @devops
+        read only= yes
+        #writable= jodi sobai ke permission deoua hoy r ki tkn eita use hoy
+        write list= devops2
+
+08) setfacl -m g:devops:rwx /devops/ (devops group devops directory er upore full permission pabe )
+09) getfacl /devops/ (devops directory e rdetails dekhar jonno )
+10) pdbedit -L      (p=samba password,db=database, L=list )
+11) smbpasswd -a devops1 ( a=add)
+12) pdbedit -L 
+13) smbpasswd -x devops (kono user ke samba server database theke remove korar jonno )
+
+############################## SELINUX ##################################
+
+14) getenforce ( SELinux e ki obopsthay ase seta dekhar jonno)
+15) ls -ldZ /devops (devops e SeLinux er tag kivabe ase seta dekhar jonno)
+16) semanage focontext -a -t samba_share_t "/devops(/.*)?"    (SELINUX e samba service er tag "samba_share_t" )
+17) restorecon -Rv /devops/     ( selinux er tag change korar jonno korar jonno)
+
+############################# FIREWALL ########################################
+
+
+18) firewall-cmd --permanent --add-service=samba
+19) firewall-cmd --reload
+20) firewall-cmd --list-services
+
+****Go to client pc and hit ip \\172.16.113.30\window and the gave the username and password, then you can access
+
+############################# Troubleshoot ########################################
+21) testparm (sob dekhay samba server er information)
+22) systemctl restart  smb nmb
+23) smbclient -U devops1  //172.16.6.129/windows    (enter deour pore password caibe)
+24)
+25)
+26)
+27)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

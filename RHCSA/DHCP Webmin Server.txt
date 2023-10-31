@@ -1,0 +1,16 @@
+
+yum install wget
+wget http://download.webmin.com/download/yum/webmin-2.000-1.noarch.rpm --no-check-certificate
+yum install perl unzip perl-Net-SSLeay perl-Encode-Detect perl-Data-Dumper
+rpm -Uvh webmin-2.000-1.noarch.rpm 
+systemctl start webmin.service
+systemctl status webmin.service
+vi /etc/selinux/config 
+reboot
+ip a
+systemctl start webmin.service
+
+firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -o eth0 -j MASQUERADE -s 10.10.10.0/24
+sudo firewall-cmd --zone=public --change-interface=eth0
+sudo firewall-cmd --zone=public --add-port=10000/tcp
+firewall-cmd --complete-reload

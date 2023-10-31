@@ -1,0 +1,79 @@
+ ####################### RPM ###############################
+RPM= Redhad Package manager
+***** Note RPM use hoy redhat, centos and fedora base OS e
+***** Debien base e use hoy deb
+-----------------
+create repository in CentOS minimul
+-------
+# mount    /dev/cdrom    /mnt
+#  mkdir /localrepository
+#  cp -pr    /mnt/*    /locaprepository
+#  vi   /etc/yum.repos.d/localrepo1.repo
+---------
+*** Install and troubleshoot
+------
+# rpm -ivh /localrepository/Packages/zsh
+# rpm -q vsftpd ---------q=query
+#rpm -qa | grep vsf
+# rpm -evh vsftpd ---------> uninstall or remove, erase evh=erase verbose hash
+#rpm -Uvh /localrepo/Packages/Vsftpd.2.3.1.34
+------------------------------
+
+########################## YUM SERVER ###################################
+*** rpm diya amora ekbare ektar beshi package install korte pari na and online package o install korte pari na
+
+*** YUM= Yellowdog Updater Modified is a open source 
+
+*** Production e on gula linux server thakte pare, amora ekta server e you configure kore rakhbo
+	and oi link ta sob server er sathe share diya rakhbo, tahole amader storage use kom hobe.
+	*** ei jonno amader yo=um sever korte hobe ftp diya.
+
+# rpm -ivh /localrepo/Package/vsftpd.3.0.2
+# vim /etc/vsftpd/vsftpd.conf
+	 12) anonymous_enable= YES
+	115) listen=YES
+	124) listen_ipv4=NO
+# systemctl restart vsftpd
+# systemctl enable vsftpd
+# firewall-cmd --permanent --add-rich-rule='rule family=ipv4 source address=192.168.171.0/24 service name=ftp accept'
+# firewall-cmd --reload
+# firewall-cmd --list-all
+# cp -vfr /mnt/* /var/ftp
+# vim /etc/yum.repos.d/dvd.repo
+	[AppStream] ------Repository ID
+	name=AppStream
+	baseurl=file:///mnt/ ------------------- sudu locally pabe
+	baseurr=ftp://172.16.113.139/ ----------- ekoi Network e thaka sobai pabe, like as ftp
+	gpgcheck=0
+	enabled=1
+
+	[BaseOS]
+	name=BaseOS
+	baseurl=ftp://192.168.68.111/BaseOS
+	gpgcheck=0
+
+
+# yum clean all
+# yum repolist
+# yum repolist all
+# yum install -y xclock
+#
+
+
+192.168.171.0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

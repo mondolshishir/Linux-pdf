@@ -1,0 +1,31 @@
+/bin == sob doroner user binaries thake.Like as cd, ls, yum, pwd
+/sbin=== sob doroner system binaries thake.(sudu matro root user access thake)
+/etc====sob doroner configuration file thake.
+/etc/fstab: 
+/etc/passwd: 
+/etc/shadow: 
+/etc/group: 
+/etc/hosts: 
+/etc/services: 
+/etc/rc.local: 
+------------------------------------------------
+/dev==== Device files are special files that represent physical devices, such as hard drives, optical drives, network interfaces, and input devices.
+/dev/sda,     /dev/sdb,   dev/cdrom, eth0,eth1, tty0, tty1
+
+------------------------------------------
+/proc===process information
+
+-----------------------------
+
+/var== contains variable data such as log, tmp, mail spool files, lib
+-----------------
+
+/opt===/opt directory is used to install additional software packages which is not available in core packages.
+---------------------------
+/mnt ======== The /mnt directory is typically used for mounting removable media, such as USB drives and CD-ROMs. However, it can also be used to mount other types of filesystems, such as network shares and read-only filesystems.
+------------------------------
+The /media directory is typically organized by device type. For example, all of the USB drives will be mounted to directories under /media/usb, and all of the CD-ROMs will be mounted to directories under /media/cdrom.
+---------------------
+
+/srv===The /srv directory is typically organized by service. For example, all of the data for the web server would be stored in the /srv/www directory.
+/media=====

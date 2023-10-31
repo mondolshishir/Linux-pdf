@@ -1,0 +1,4 @@
+There are two type linux desktop GUI
+01) GNOME
+02) KDE
+

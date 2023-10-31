@@ -1,0 +1,30 @@
+01)find / -name var
+02) find / -type d -name var
+03) find / -name new.*
+04) find / -iname New       (i=ignore case)
+05) find / -perm 4755   (perm= permission)
+06) find / -user abu (user er ownership er file gula koi koi ase)
+07) find / -group admin (user er group ownership er file koi koi ase)
+08) find / -type f -name "*.txt" (.txt type er file gula sob show korbe)
+09) find / -size 5M (fixed Size er file or Dir ber korte use hoy)
+10) du -h /usr/lib/firmware/netronome/nic-sriov/inc_AMSA0099-0001_2X25.nffw
+11) find / --size +50M -size -100M ( 50 Mb theke 100 Mb er modde thaka file gula dekhabe)
+
+----------------------------------------------------------------------------
+*******output er vitor theke file or content ber kore display te show korbe
+
+12) find / -user abu | grep
+13) cat /etc/passwd | grep abu
+--------------------------------------
+#####Output Redirection#########
+
+14) find / -user abu > copyabu
+15) find / -user abu >> copyabu
+16) find / -user abu 2> copyabu
+17) find / -user abu 2>> copyabu
+18) find / -user abu &> copyabu
+19) find / -user abu &>> copyabu
+20) find / -user abu > new 2>&1 copyabu
+21) find / -user abu >> new 2>&1 copyabu
+22) 
+23)

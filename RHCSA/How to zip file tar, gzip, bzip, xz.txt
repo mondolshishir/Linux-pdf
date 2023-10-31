@@ -1,0 +1,18 @@
+1) tar -cvf etc.tar /etc/ -----------> zip korar jonno 
+2) du -h etc.tar ------> content size dekhar jonno
+3) tar -tvf etc.tar ----> zip file er vitore ki ki ase sate ls akare dekhay
+4) gzip etc.tar -----> higly compressed korar jonno
+5) gunzip etc.tar.gz -------> unzip korar jonno
+6) bzip2 etc.tar ----> aro highlycompressed korar jonn
+7) bunzip2 etc.tar.bz2 --> unzip korar jonno
+8) xz etc.tar --> er upore kno zip hoy na
+------------------------------------------------
+######### At a time highly compressed cmd ###################
+
+9)  tar -czvf var.tar /var/ ------> gzip
+10) tar -cjvf var.tar /var/ ------> bz2
+11) tar -cJvf var.tar /var/ ------> xz
+################ tar diya jeno extension UNZIP kora jay #############	
+12)tar -xvf var1.1 
+13) 
+14) 

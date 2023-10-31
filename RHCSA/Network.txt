@@ -1,0 +1,41 @@
+*********************NETWORK*********************
+3 vabe  ip assign kora jay
+	01) Dynamic, 02) Static, 03) Dial Up
+01) #nmcli, nmtui, ifconfig
+02) #nmcli conncetion show
+03) #nmcli device show
+04) #nmcli device show ens33
+05) # vim /etc/sysconfig/network-scripts/     (core network files are here )
+	BOOTPROTO=static
+	IPADDR =192.168.68.110
+	GATEWAY=192.168.68.1
+	PREFIX=24
+	DNS1=8.8.8.8
+	DNS2=4.4.2.2
+
+06)# pstree (it is show all category )
+07)# ls /etc/systemd/system ( systemctl cmd calale ei link e jaiya information niye ese amader ke show kore )
+08)# cat /etc/resolv.conf (show DNS)
+09)# kill -l, kill -9 ( process id kill korar jonno, becially kill diye signal pathano hoy)
+10)# nmcli connection modify ens33 ipv4.addresse 192.168.68.110/24 
+     ipv4.gateway 192.168.68.1 ipv4.dns 8.8.8.8 1.1.1.1 ipv4.method static
+     connection.atuconnect yes
+
+11)#ifup ens33, ifdown ens33
+12)# iproute
+13)# uptime
+
+14) Manually ip addr connect
+ # nmcli connection modify ens30 ipv4.addresses 192.168.10.22/24 ipv4.gateway 192.168.10.254 ipv4.dns 8.8.8.8, 4.4.2.2 connection.autoconnect yes method none
+15)systemctl restart NetworkManager ; nmcli connection down ens30 ; nmcli connection up ens33
+16) route -n ----for check gateway
+17)
+18)
+19)
+20)
+21)
+22)
+23)
+24)
+25)
+26)

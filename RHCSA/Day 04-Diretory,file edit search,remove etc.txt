@@ -1,0 +1,24 @@
+# who (kon user diya login asi rki )
+#pwd (current directory )
+# runlevel (koy terminal calu ase runlevel 0-5 porjontu hoy )
+# ls -a
+# ll 
+# mkdir, rmdir
+# rm
+# touch (create a file extension na dile by default .txt nibe )
+#cp, mv
+# rm -fr /tmp (ekta directory delete korle gele jodi oitar modde aro 
+	file,directory thake tkn -fr(force) kore delete korte hoy)
+# chattr +i (change attribute kore dile root o delete korte parbe na, +i=immutable)
+# echo $PATH ( amar je cmd gula kon location e ase ) 
+# which rm,pwd, who (amar ei command gula koi ase seta dekte which e rpore oi cmd ta likte hoy )
+# ls *.conf ( sob gular sess .conf thaklei dekabe )
+# ls p??, ?w? ( ? eita dara word search kore file or anything khuje ber kora hoy )
+#ls *[[:upper:]], *[[:lower:]], *[[:digit:]]
+#
+#
+#
+#
+#
+#
+#

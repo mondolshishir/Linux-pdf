@@ -1,0 +1,43 @@
+01) yum install -y samba samba-common samba-client
+
+02) systemctl start smb nmb
+03) systemctl enable smb nmb
+04) systemctl status smb nmb
+
+
+05) mkdir /software /devops
+06)  useradd software1, sofware2
+07) useradd devops1, devops2
+08) groupadd devops
+09)usermod devops1 -aG devops
+10) usermod devops2 -aG devops
+
+
+
+11) vim /etc/samba/smb.conf --->
+
+[windows]
+        comment = For Windows User
+        path = /devops
+        browsable = yes
+        hosts allow = 172.16.113.0/24 192.168.1.0/24
+        valid users = @devops
+        read only = yes
+        write list = devops2
+
+
+12) setfacl -m g:devops:rwx /devops/
+13) getfacl /devops/
+14) pdbedit -L
+15) smpasswd -a devops1
+16) getenforce
+17) ls -ldZ /devops
+18) semanage fcontext -a -t samba_share_t "/devops(/.*)?"
+19) restorecon -Rv /devops/
+20) firewall-cmd --permanent --add-service=sambaa
+21) firewall-cmd --reload 
+22) firewall-cmd --list-services
+23) systemctl restart smb nmb
+24) testparm
+25) 
+

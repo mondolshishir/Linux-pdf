@@ -1,0 +1,7 @@
+LDAP= Lightweight Directory Access Protocol
+*****LDAP same as Active Directory
+
+NOte: LDAP or AD DS er ekta prerequisite hosse DNS server er ip hisabe LDAP server er IP thakte hobe, seta secondary holeo thakte hobe
+
+
+

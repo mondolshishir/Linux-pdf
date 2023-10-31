@@ -1,0 +1,2 @@
+Amader onk somoy system e future e auto command run hobe, jemon backup, messege log, ei kaj gula 
+amora time sedule diya korte pari. r eita korte help kore cron Application

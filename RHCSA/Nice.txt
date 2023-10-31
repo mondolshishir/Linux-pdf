@@ -1,0 +1,5 @@
+Amader program gula top command diya search diya dekhte pari resourse ke beshi khasse,
+then Nice diya renice kore amara process id komaiya kicu ta presure komate pari
+01) top
+02) shift+l (then write something for search)
+03) r ----> change the value

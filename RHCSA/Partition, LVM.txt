@@ -1,0 +1,312 @@
+
+******************PARTITION****************************
+VM e partition add korte caile amader ke hard disk then add then SCSI/SATA Dite hobe,
+SCSI er jonno ekta software install lage ja by default thake na
+ei jonno amora SATA use korbo, then store virtual disk as a single file
+
+Note: hard drive er information thake /dev er modde
+
+cd /dev/ 
+ll egrep | "sda|sdb"
+
+
+Cli te partition korte bes kicu cmd ase
+fdisk, parted, cfdisk
+
+disklabel diya amora bujte pari ei hard drive e koyta partition hobe,
+ekta hard drive add korar pore by default DOS disklevel bose
+desiklevel deour sathe sathei ekta unique id genertate hoy
+amader oboossoi disklevel change kore dibo
+amora GPT disklevel use kori
+
+~]# fdisk /dev/sdb
+ekhon amora hard driver er modde enter korlam
+Then issa moto partition korbo
+m cmd er help niya
+
+partprobe ------ ekta system er sob harddrive, partition sobai ke call korbe
+ei jonno sudu partprobe cmd ta dibo na, er sathe ari=o kicu add korbo
+ekta hard disk add kore customize korar pore na asle partprobe cmd calaile asbe
+
+amora partition korar pore be default Linux type thake, type change korte hoile 
+""""t"""""""" cmd calaiya next process follow korte hobe, pura list dekhte caile L cmd dite hobe
+------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------
+
+
+Amora 2 two type er partition korte pari. Primary and logical. amora caile jekno ekta or 2 tai
+korte pari, onk somoy windows e 2 tay dekha jay.
+MBR partition  e maxmimum 4 ta primary kora jay.
+Extendend partition format hoy nai, ei jonno extend er modde Logical partition create korte hoy,Logical partition format kora jay. ekta extend er modde 128 ta partition kora jay.
+Note: Logical partition theke OS boot korte pare na.
+
+MBR 2TB porjontu support kore.
+GPT support kore 1 Oct, maximum 128 ta primary partition kora jay.
+Computer bios jodi Legecy hoy tahole GPT possible na
+GPT er jonno UEFI bios lagbe.UEFI= User Extended Firmware Interface
+
+
+** Ekta Hard disk e maximum koyta primary partition and koyta logical partition kora jay?
+** ki type er partition hobe, maximum koyta hobe, ei ta depend kore prtition table er type er upor, eta ke abar partition sceheme o bole.
+	two type partition table korte pari. MBR=Master Boot Record, GPT=Guid Partition Table.
+
+##################################### LAB ########################################################
+Note: In vmware, shutdown system and add harddisk on SATA mode.
+#lsblk
+
+Partition korar jonno 3 ta type er application use korte pari.
+   **fdisk= ,(parted gparted)-- ei 2 ta same, parted cli, gparted graphical
+1) fdisk -l ----->details show kore.
+2) fdisk /dev/sdc ---->note: Every partition need to some memory for save data. so they reserver (0-2047)byte
+3) Linux file system= mkfs. (clcik double tab)
+4) mkfs.ext4 /dev/sdc1    ------> for format partition
+5) blkid === block id diya partition er current status dekha jay.
+6) ** Linux e kno drive letter nai,amora linux e mount point use korbo.
+	Amora sorasori partition use korte pari na, ei jonno amader dirve letter or mount point lage.
+7) Mount korar 2 ta way ase
+	temporary mount == jotosomoy OS run thakbe totosomoy thakbe
+	permanent mount  == 
+ #mkdir /home/abu/newfolder
+ #mount /dev/sda1 /home/abu/newfolder ---> Temporary
+
+8) cat /etc/fstab   -------> permanent
+	fstab=filesystem table
+	fstab e 6 ta parameter add korte hoy
+	01)device path--> /dev/sdc1
+	02)mount path---> /home/abu/newforlder
+	03) filesystem--> ext4
+	04) permission--> defaults,manuallay o kora jay, suitbit, ki typer device hobe,password,id,service
+*****	05) dumping log/memory--> suddenly crash korle, keno korlo? ei log deke ber korte caile 1 noito 0.
+*****	06) filesystem check --> 0 te check hobe na, 1 dile protibar machine on hour somoy check korbe,
+				Note: 0-no check, 1-/root check, 2-sub mount poin gula check
+					(0,1,2)
+Note: fstab edit korar age obossoi ekta copy kore rakhbo
+9) Temporary mount= mount /dev/sdc1 /newfolder/
+    Permanent mount
+	#vim /etc/fstab
+	/dev/sdc1	/home/abu/partd2	ext4	defaults	0 0
+10) mount -av (av=all verbose)
+
+################# SWAP ####################
+Note: swap ID=83 and Type=Linux support kore na.
+
+11) fstab /dev/sdd
+12) same as others
+13) id=82
+14) mkswap /deb/sdd1 ---> for format
+Note: swap space mount hoy na, ON and Off hoy
+15) free -m
+16) swap e o temporary and permanent hoy
+17) swapon /dev/sdd1
+18) vim /etc/fstab--> /dev/sdd1 swaplab swap defaults 0 0
+19) 
+20)free -m ---> swap memory check korar jonno
+21) swapoff /dev/sdd1
+22) swapon -s
+
+
+
+
+################################################## LVM ####################################################################################
+23) LVM= Logical Volume Manage
+24) LVM= Logical volume management
+25) LVM er main concept holo==== amara multiple raid disk thekeo signle partition, abar normal Disk thekeo single partition korte parbo
+ 
+26) Some shortcut Tag
+------------------
+27) PP= Physical Parition
+28) PV=Physical Volume (Hard disk)
+29) VG= Volume Group
+30) ------------------- Uporer 3 tar ektao caile format kora jay na
+
+31)LV=Logical Volume
+32) FS=Filesystem
+33) MP= Mounting Point
+
+34) amora ekta hraddisk theke multiple partition korte pari
+35) Kintu multiple hard disk ke ekta partition ki kora jay ????
+36) Ha possible, Raid diya kora jay
+37) le partiton korte pari
+
+38) Note: ekti server er  onkgula hard disk thakle seta kivabe maintain hobe seta depend kore System Adminstrator er upor
+
+39) Multiple/Single PP niya ekta PV hoy
+40) Multiple/Single PV niya ekta VG hoy
+
+41) LV korar Flow chart
+-----------------
+41) PP(Single/Multiple)-->PV(Single/Multiple)--> VG(sob space or kicu space niya) ----LV--->Format --> Mount --Then we can use it
+42) PP, PV, VG-----------Eigula format kora jay na
+43) Note: Ekta VG theke multiple LV kora jay, so multiple file system o deoua jay
+44) LV-----Fotmat kora jay
+45) Note: Format cara amora kno volume niya kaj korte parbo na
+46) LV format koira then mount koira amora use korte pari.
+-----------------------------------------------
+47) ############ FLOW CHART OF LVM #####################
+48) pp --> pv --> VG---> LV(format kora jay) --> format (ext4) --> mount /dev/newfolder 
+49) Note:  ek ba ekadhik PP niya ekta PV hoy.
+       ek ba ekadhik PV niya ekta VG hoy.
+       ek ba ekadhik VG niya ekta/ekadhik LV kora jay.
+
+50) Note: ekta Volume Group (VG) theke amora multiple Logical Volume (LV) create korte pari.
+51) Note:differnt harddisk thekk o PP niya PV kora jay.
+
+#################### LAB ##########################
+fdisk /dev/sdb
+	Command (m for help): n,t=8e
+** create two LVM partition
+**LV partition gula ke Logical volume hisabe create kor enite hobe
+# pcvreate /dev/sdb1 /dev/sdb2  ---pv=physical volume
+# pvs
+# vgcreate /dev/sdb1 /dev/sdb2 -----vg=volume group
+#vgs, pvs
+# pvdisplay, vgdisplay
+#lvcreate --name lablv1 --size 2G labvg1
+#lvs
+# mkfs.ext4 /dev/mapper/labvg1-lablv1
+#mkdir /lablv1
+**Now need to mount for use
+# vim /etc/fstab
+ /dev/mapper/labvg1-lablv1	/lablv1		ext4	defaults	0 0
+
+# mount -av
+---------------------
+** Now make swap partition
+# lvcreate -n lvswap1 -L 1G labvg1
+** check swap space 
+# free -m
+#mkswap /dev/mapper/labvg1-lablv1
+#vim /etc/fstab
+/dev/mapper/labvg1-lvswap1	swap	swap	deafults	0 0
+#swapon -av --------for mount swap partition *****
+#free -m
+# swapon -s
+--------------------
+*** Physically add kora device e aro space thakle seta theke niya  amora previous volume group e add korte pari
+** next time volume group extend korar dorkar hoile
+#fdisk /dev/sdb
+	sdb3
+#pvcreate /dev/sdb3
+# vgextend labvg1 /dev/sdb3
+
+**LV= Logical Volume extend
+# lvextend -L +1536M
+** Note: logical volume extend korle obossoi file system ke resize korte hobe,ta na hole add hobe na
+# resize2fs /dev/labvg1-lablv1
+# df -h
+---------
+*** Reduce storage
+** Frist partition ta ke umount kore nite hobe.
+** Second file system ta ke resize kore nite hobe
+** umount korar jonno partition path use korte pari abar directory path use  korte pari.
+# e2fsck /dev/labvg1/lablv1 [e2fsck=execute to file system check]
+# resize2fs /dev/labvg1/lablv1 2500M
+# lvreduce -L -800M /dev/labvg1/lablv1
+
+*** ekhon ager partition ta ke mount korar jonno resize korte hobe
+# resize2fs /dev/labvg1/lablv1
+# mount -av
+-------------------
+
+PE=Physical Extend, default size 4Mb
+** ei PE size er upore depend kore partition size koto hpbe
+# fdisk /dev/sdd
+# pvcreate /dev/sdd1
+# vgcreate -s 128M vglab2 /dev/sdd1
+# lvcreate -n lablv2 -L 2200M vglab2
+#lvs
+# mkfs.xfs /dev/mapper/vglab2-lablv2
+# mkdir /lablv2
+***Amora eibar mount korar jonno UID use korbo
+# blkid | grep vglab2 >> /etc/fstab
+# vim /etc/fstab
+	UID............
+# mount -av
+----------
+*** ekhon amora PE theke niya logical volume create korbo
+#lvcreate -n lablv3 -l 10 vglab2 [NOTE ]
+# lvs
+# mkfs.xfs /dev/mapper/vglab2-lablv3
+# mkdir /lablv3
+# vim /etc/fstab
+	UID............
+# mount -av
+--------------------
+*** Ekhon moe kopri amader volume group free joto space ase sob niya ekta partition banabo kon size mention cara
+# lvcreate -n lablv4 -l 100%FREE labvg1
+#vgs
+# mkfs.xfs /dev/labvg1/lablv4
+# mkdir /lablv4
+# vim /etc/fstab
+	UID............
+# mount -av
+
+
+
+
+############### LV REMOVE ##################
+	01) unmount
+	02) lv remove
+	03) vg remove
+	04) pv rm
+	05) pp rm
+
+---------------------LAB-----------------
+# vim /etc/fstab -> remove partition
+# umount /lablv1 --> path un monut
+# lvremove /dev/vglab2.lablv2
+***Note: volume group remove korar age obossoi dekhe nite hobe kno LV add ase ki na
+# vgremove vglab2
+# pvremove /dev/sdd1
+# fdisk /dev/sdd
+	d ---remove
+
+
+
+
+
+
+Note: jekno ekta miss hole system crash hour possiblity ase.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
