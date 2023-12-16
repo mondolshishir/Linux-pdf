@@ -1,0 +1,19 @@
+
+
+
+01) ll -ldZ /etc
+02) semanage fcontext -l | less
+03) semanage fcontext -l | wc -l
+04) tail -f /var/log/messages
+
+###############APACHE/HTTPD SEVERVER SELINUX ###############
+#semanage fcontext -a -t httpd_sys_ content_t "/virutal(/.*)?"
+# restorecon -Rv /virtual/
+
+************Changing Http port ********
+# semanage port -l | grep httpd
+# man semanage port | grep http  ---------->
+# semanage port -a -t http_port_t -p tcp 10000
+
+****** ekhon ei port obossoi listen port e entry dite hobe
+# vim /etc/httpd/conf.d/ecommerce.conf ---------> listen 10000

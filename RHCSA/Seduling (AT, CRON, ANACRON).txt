@@ -1,0 +1,122 @@
+Amader onk somoy system e future e auto command run hobe, jemon backup, messege log, ei kaj gula 
+amora time sedule diya korte pari. r eita korte help kore cron Application.
+
+#############  AT ###################
+01) at 09:25PM 09/12/23
+02) at> df -hT /tmp/filessystem.txt
+03) atq    --------> kotogula sedule run ase seta dekha jay
+04) df -hT >   /tmp/files.txt | at 09:12AM 12/12/2023
+05) at 09:24PM -f /shishir/script.sh 
+06) at 1pm + 2 days
+07) at -c 20 ----> koto number sedule dkte cai
+08)  cd /var/spool/at/ | ls -l   ---------> kotogula sedule job pending ase seta dekha jay
+
+#####################  CRONTABS  #################
+
+01) systemctl status crond.service
+02) cat /etc/crontab
+03) crontab -e
+     [there is 5 astric in this editor, minute, hour, day(1-31), month(1-12), day of week (0-6=7) ]
+	[ Note: if we use astric * , then it will do every time ]
+	example: 12 19 * * * echo "Hellow World" > /dev/pts/0
+		 10 19 28 11 0(sunday) echo "Today is Saturday" > /dev/pts/0
+		 */20 * * * * echo "Please print this ever 20 minutes" > /dev/pts/0
+
+04) crontab -l 
+05) ls -ld /etc/cron.*
+
+06) cat /var/log/cron
+07) cron -l -u shishir
+08)  crontab -r    -----for remove
+09) crontab -r -u shishir 
+10) @reboot date >> /rebootlog.txt ----------> amar pc reboot hoile sei log eikhane thakbe
+11) vim /etc/cron.deny
+	shishir
+
+
+########### ANACRON #############
+anacron use kora hoy oisob pc te jegula 24/7 on thake na
+01) cd /var/spool/anacron/ ls -l
+02) vi /etc/anacrontab
+03) anacron -T
+04) anacron -d -------> emediately anacron run korar jonno
+
+##### Advanced cron jobs #############
+Question: job for 3rd wednesday each month, 
+	  job for monday and Monday and tuesday each week
+	  job for date 1to 5 each month
+
+01) crontab -e
+	30 23 * * 1-5(Monday-Friday) echo "Please backup the code" > /dev/pts/0
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

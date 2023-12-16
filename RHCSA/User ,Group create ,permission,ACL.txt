@@ -1,0 +1,90 @@
+************User Creation Details*******
+
+Ekta user er entry thake 5 jaigay
+01) passwd 02)shadow 03)group 04) default/useradd 05) login.devs
+
+# useradd/adduser shishir -d /opt -s /bin/bash -u 1520 -c "Md Shishir" -g -aG
+# id shishir, root, user1.....
+#usermod -u 
+# userdel shisir -rf
+#useradd/adduser(ubuntu er jonno kicu comment cay, usermod, userdel
+#groupadd, groupmod, groupdel
+
+01) ID 0 is reserve for root user
+02)ID 1 to 200 is used for administrative user der jonno
+03) ID 201 to 999 Reserved, used for system perpus and software perpus e 
+   je user create hoy tader jonno. apache(id:300),FTP
+04)  ID 1000-6000+ used for regular user
+
+05) User er information paoua jay
+	#cat /etc/passwdcal
+
+06) Group er information thake
+	#cat /etc/group
+
+07) User er password information paoua jay
+	#cat /etc/shadow
+
+08) user create korar sathe sathei user name  e ekta home directory create     hoy ja /(root) er modde thake
+09) by default user tar directory er modde kicu file pay, eigula age theke       bola thake.
+	#cat /etc/default/useradd
+    amora caile ei file edit o  korte pari
+10) user er all details thake and edit kore change kore deoua jay
+	#cat /etc/login.devs
+11) exiting kono user ke edit korte caila 
+	#usermod username (-s /bin/bash) (-c for comment, full name) (-u 	1300)........
+	#groupmod user1  (-g, -G .....)
+12) usermod  seipexam1 -g lab                  (seipexam1 user er group change korar jonno ei command use kora hoy )
+13) chgrp lab /SEIP-Lab          (kon directory er group change korar jonno ei command)
+14) file permission for root==(666-022)=644
+15) Directory permission for root ===(777-022)=755
+
+#####################ACL=Access Control list############
+ACL diye amora fixed kno user, group, other ke permission dite pari, mane sudu matro sei se gular permission pabe.
+16)setfacl -m===set file access control list -modify
+17) setfacl -m u:abu:rw- test.txt
+Note: user abu test file read write permission pabe, ete file er kno policy change hobe na.
+
+18) setfacl -m g:abu:rw- test.txt
+19) setfacl -m ug:abu:rw- test.txt (jodi user and group er same permission hoy amora eksathe dite pari)
+
+Note Direcotry er permission change korle er vitore permission same as change korte caile extra -R add korte hoy
+20) chmod ug+rw, o+r tmp/ -R [R= Recursive]
+21) setfacl -m u:abu:rw- -R new4/ 
+
+Note: uopre permission gula sudu exiting content er upore permission deoua
+
+22) setfacl -m d:u;abu:rw- -r new3/
+Note: d= default diya dile new kore kno content create hole o je permission deoua ase seta pabe.
+---------------------------------------------------
+
+*****************************sudoers******************************************
+23)amora caile kno user ke super user previllege dite pari.
+24) visudo /etc/sudoers
+25) sudo= super user do
+######################SPECIAL PERMISSION #####################
+Normoal user ke kicu extra power deouai holo Special Permission.
+
+26) SUID= Set User ID numeric value=4, relative value= u+s
+27) SGID=Set Group ID numeric value=2 Relative value= g+s
+28) chmod u+s new4
+29) chmod g+s new4
+******Sticky note use korle je user create korbe se cara onnk kew delete korte parbe na
+30) chmod +t new3
+31)chmod +x new3
+32)
+33)
+34)
+
+
+
+
+
+
+
+
+
+
+
+
+

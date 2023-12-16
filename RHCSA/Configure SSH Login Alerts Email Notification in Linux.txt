@@ -1,0 +1,12 @@
+ For install mailx and sendmail we need to configure yum server or localrepo,then install packages
+
+[root@shishir75 ~]# yum install -y mailx sendmail
+[root@shishir75 ~]# systemctl start sendmail
+[root@shishir75 ~]# systemctl enable sendmail
+[root@shishir75 ~]# ls -al
+[root@shishir75 ~]# vi .bashrc >> echo ' ALERT - Root Shell Access 192.168.1.107 on:'  `date` `who` | mail -s " Alert: Root Access"   mondolshishir@yahoo.com
+[root@shishir75 ~]# source .bashrc
+----------------------------------------------------
+
+[root@shishir75 ~]# vi /etc/bashrc ----------> for all users
+[root@shishir75 ~]# 

@@ -1,13 +1,13 @@
 ***************APACHE WEB SERVER*******************
 
 
-# ISET
+# ISET= Install Start Enable troubleshoot
 # yum install -y httpd
 # systemctl status , enable , start httpd
 # cd /etc/httpd                  (main file gula eikhane thake )
-#vim /etc/hosts ----------> 172.16.113.100 shishir.net 	shishir (IP will be server IP )
-# hostnamectl set-hostname shishir.net
-# cd /var/www/html/ ---> vim index.html     ( obossoi file type "index.html" hote hobe)    (jodi ei page e kicu na thake tokhon wellcome page dekay)         
+#vim /etc/hosts ----------> 172.16.113.100 shishir.net 	shishir (IP will be server IP )(Local name resulaiton korar jonno)
+# hostnamectl set-hostname shishir.net (ekta kalponik domain, jeta globally pabe na, sudhu local user ra pabe)
+# cd /var/www/html/ ---> vim index.html  (document root)   ( obossoi file type "index.html" hote hobe)    (jodi ei page e kicu na thake tokhon wellcome page dekay)         
 # systemctl restart httpd
 #
 #cd /etc/httpd/conf -----> ls ---> vim httpd.conf  or vim /etc/httpd/conf/httpd.conf
@@ -25,8 +25,12 @@
 		163) --------
 
 # mkdir /var/www/html/home ---> vim index.html      ()by default )
+
+
+***********Default configuration file ke bad diya amora new kore korte pari
+
 # cd /etc/httpd/conf.d -->vim  hello.conf      (amora jodi alada kore site gular location dite cai and file configure korte cai tahole eitar modde jaite hoeb )
-		<VirtualHost    *:80>
+		<VirtualHost    *:80>      [ * mane sob ip thekei pabe ]
        			 ServerName      shishir.net
         		 DocumentRoot    /var/www/html
 		</VirtualHost>
@@ -41,10 +45,51 @@
 		
 
 # cd /var/www/html --> mkdir profile --> vim index.html
-#
-#
-#
-#
-#
-#
-#
+
+*********Ekhon amora cail ei /var/www/html  ei default document root change kore dite pari
+
+# mkdir /ecommerce  (ei directory er moddhe project file, directory rakhbo )
+# cd /etc/httpd/conf.d -->vim  ecommerce.conf      
+		<VirtualHost    *:80>      [ * mane sob ip thekei pabe ]
+       			 ServerName      ecommerce.net
+        		 DocumentRoot    /ecommerce
+		</VirtualHost>
+
+		<Directory "/ecommerce">
+       			 Require all granted
+		</Directory>
+#vim /etc/hosts ----------> 172.16.113.100 ecommerce.net 	ecommerce
+
+/////////////////SELINUX /////////////
+
+# semanage fcontext -a -t httpd_sys_ content_t "/virutal(/.*)?"
+# restorecon -Rv /virtual/
+
+***************Eki network e onno pc or user er theke server browse korte caile firewall entry dite hobe
+# firewall-cmd --permanent --add-service={http, https }
+# firewall-cmd --list-services
+# firewall-cmd --reload
+
+
+************Changing Http port ********
+# semanage port -l | grep httpd
+# man semanage port | grep http  ---------->
+# semanage port -a -t http_port_t -p tcp 10000
+
+****** ekhon ei port obossoi listen port e entry dite hobe
+# vim /etc/httpd/conf.d/ecommerce.conf ---------> listen 10000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+Deny or Allow SSH login from Selected Users/ Groups
+---------------------
+
+# vi /etc/ssh/sshd_config 
+	AllowUsers shishir muskan
+#systemctl restart sshd
+# addgroup allow
+# addgroup deny
+# vi /etc/group
+	allows:x:1007:abu,hena,rony
+	denys:x:1008:shishir
+
+# vi /etc/ssh/sshd_conf
+	AllowGroups 
+	DenyUsers
+	DenyGroups
+
+

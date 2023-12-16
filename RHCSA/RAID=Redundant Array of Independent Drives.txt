@@ -1,0 +1,28 @@
+RAID
+-------
+Raid levels: 5 level
+01) raid 0 -----> striping
+02) Raid 1 -----> mirroring
+03) Raid 5 -----> Striping with parity
+04) Raid 6 -----> striping with double parity
+05) Raid 10 ----. Combining mirroring and striping (Raid 0,1)
+
+RAID 0
+---------------
+ Raid 0 te 2 ta disk thakle storage half half kore alada disk e thake.
+ekta hard disk fail korle both disk er data loss hobe
+
+Raid 1
+------------------
+2 ta disk thakle data morroirng hisabe thake
+
+Raid 5
+-----------------
+ 
+
+Raid 6
+----------------
+
+
+Raid 10
+------------------

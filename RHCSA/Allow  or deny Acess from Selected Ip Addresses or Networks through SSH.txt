@@ -1,0 +1,20 @@
+centos-07/redhat-07
+---------
+01) vi /etc/hosts.deny
+	sshd: 192.168.68.105, 172.16.68.0/22, 192.168.68.*
+
+02) vi /etc/hosts.allow
+	sshd: 192.168.68.102
+------------------------------
+
+Centos-08/Redhat-07
+----------
+01) vi /etc/ssh/sshd_config
+	Denyusers shishir@192.168.68.0/24 *@192.168.68.105 *@192.168.68.* 
+
+
+
+
+
+
+
